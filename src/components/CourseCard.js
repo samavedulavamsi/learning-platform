@@ -1,42 +1,50 @@
 import { Link } from "react-router-dom";
 
-function CourseCard({ course }) {
+function CourseCard({course}) {
 
-  return (
-    <div className="col-lg-4 col-md-6 col-sm-12">
+return(
 
-      <div className="card h-100 shadow-sm border-0 course-card">
+<div className="col-md-3">
 
-       <img
-  src={course.image}
-  alt={course.title}
-  className="card-img-top"
-  style={{ height: "180px", objectFit: "cover" }}
+<div className="card course-card shadow-sm">
+
+<img
+src={course.image}
+className="card-img-top"
+alt={course.title}
 />
 
-        <div className="card-body d-flex flex-column">
+<div className="card-body">
 
-          <h5 className="card-title fw-bold">
-            {course.title}
-          </h5>
+<h5>{course.title}</h5>
 
-          <p className="text-muted mb-3">
-            Instructor: {course.instructor}
-          </p>
+<p className="text-muted">
+Instructor: {course.instructor}
+</p>
 
-          <Link
-            to={`/course/${course.id}`}
-            className="btn btn-primary mt-auto"
-          >
-            View Course
-          </Link>
+<p className="text-warning">
+⭐ {course.rating} ({course.students} students)
+</p>
 
-        </div>
+<p className="text-muted">
+{course.lessons} lessons
+</p>
 
-      </div>
+<Link
+to={`/course/${course.id}`}
+className="btn btn-primary w-100"
+>
+View Course
+</Link>
 
-    </div>
-  );
+</div>
+
+</div>
+
+</div>
+
+)
+
 }
 
 export default CourseCard;

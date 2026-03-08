@@ -1,61 +1,89 @@
-import { useState, useEffect } from "react";
+import courses from "../data/courses";
+import { Link } from "react-router-dom";
 
 function MyCourses() {
 
-  const [courses, setCourses] = useState([]);
+  const enrolled =
+    JSON.parse(localStorage.getItem("myCourses")) || [];
 
-  const progress =
+  const progressData =
     JSON.parse(localStorage.getItem("progress")) || {};
 
-  useEffect(() => {
+  // remove duplicate enrollments
+  const uniqueCourses = [...new Set(enrolled)];
 
-    const stored =
-      JSON.parse(localStorage.getItem("myCourses")) || [];
+  const myCourses = courses.filter((course) =>
+    uniqueCourses.includes(course.id)
+  );
 
-    setCourses(stored);
-
-  }, []);
+  if (myCourses.length === 0) {
+    return (
+      <div className="container p-4">
+        <h2>My Courses</h2>
+        <p>You have not enrolled in any courses yet.</p>
+      </div>
+    );
+  }
 
   return (
-    <div>
+    <div className="container-fluid p-4">
 
-      <h1>My Courses</h1>
+      <h2 className="mb-4">My Courses</h2>
 
-      {courses.map((course) => (
+      <div className="row g-4">
 
-        <div key={course.id}>
+        {myCourses.map((course) => (
 
-          <h3>{course.title}</h3>
+          <div key={course.id} className="col-md-4">
 
-          <img
-            src={course.image}
-            alt={course.title}
-            width="200"
-          />
+            <div className="card shadow course-card h-100">
 
-          <p>{course.instructor}</p>
+              <img
+                src={course.image}
+                alt={course.title}
+                className="card-img-top"
+                style={{ height: "180px", objectFit: "cover" }}
+              />
 
-          <p>
-            Progress: {progress[course.id] || 0}%
-          </p>
+              <div className="card-body">
 
-          <div style={{
-            width: "200px",
-            background: "#ddd",
-            height: "10px"
-          }}>
+                <h5>{course.title}</h5>
 
-            <div style={{
-              width: `${progress[course.id] || 0}%`,
-              background: "green",
-              height: "10px"
-            }} />
+                <p className="text-muted">
+                  Instructor: {course.instructor}
+                </p>
+
+                <p>
+                  Progress: {Math.round(progressData[course.id] || 0)}%
+                </p>
+
+                <div className="progress mb-3">
+
+                  <div
+                    className="progress-bar bg-success"
+                    style={{
+                      width: `${progressData[course.id] || 0}%`
+                    }}
+                  ></div>
+
+                </div>
+
+                <Link
+                  to={`/player/${course.id}`}
+                  className="btn btn-primary w-100"
+                >
+                  Continue Learning
+                </Link>
+
+              </div>
+
+            </div>
 
           </div>
 
-        </div>
+        ))}
 
-      ))}
+      </div>
 
     </div>
   );

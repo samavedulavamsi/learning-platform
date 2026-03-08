@@ -10,6 +10,7 @@ function DashboardLayout({ children }) {
 
       <div className="flex-grow-1">
 
+        {/* Top Navbar (now it will load) */}
         <Navbar />
 
         <div className="p-4">

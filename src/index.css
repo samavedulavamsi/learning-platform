@@ -16,3 +16,6 @@
   width: 100%;
   border-radius: 6px;
 }
+.card {
+  backdrop-filter: blur(8px);
+}

@@ -1,47 +1,162 @@
-.App {
-  text-align: center;
+/* GLOBAL STYLES */
+
+body {
+  background-color: #f5f7fb;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/* HERO SECTION */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.hero-banner {
+  background: linear-gradient(135deg, #0d6efd, #4dabf7);
   color: white;
+  border-radius: 10px;
+  padding: 30px;
 }
 
-.App-link {
-  color: #61dafb;
+.hero-banner h2 {
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-banner p {
+  opacity: 0.9;
 }
+
+
+/* DASHBOARD CARDS */
+
+.dashboard-card {
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+}
+
+
+/* COURSE CARD */
+
 .course-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 12px;
+}
+
+.course-card img {
+  height: 160px;
+  object-fit: cover;
 }
 
 .course-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0px 12px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+/* CONTINUE LEARNING HOVER */
+
+.course-hover{
+  transition: all 0.3s ease;
+}
+
+.course-hover:hover{
+  transform: translateY(-6px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+/* BUTTON STYLES */
+
+.btn-primary {
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn-success {
+  border-radius: 8px;
+}
+
+.btn-outline-primary {
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+
+
+/* CATEGORY FILTER */
+
+.category-btn {
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+
+/* SEARCH BAR */
+
+.form-control {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+  background: white;
+}
+
+.navbar h4 {
+  font-weight: 600;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+  background: #1e293b;
+  min-height: 100vh;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.sidebar a:hover {
+  color: white;
+}
+
+
+/* COURSE PLAYER */
+
+.video-container {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+/* PROGRESS BAR */
+
+.progress{
+  height:10px;
+  border-radius:10px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .hero-banner {
+    text-align: center;
+  }
+
 }

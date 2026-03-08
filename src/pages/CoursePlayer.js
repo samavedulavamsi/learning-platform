@@ -1,91 +1,97 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import courses from "../data/courses";
 
 function CoursePlayer() {
 
   const { id } = useParams();
 
-  const course =
-    courses.find((c) => c.id === Number(id));
+  const course = courses.find((c) => c.id === Number(id));
 
   const lessons = [
     {
-      title: "React Introduction",
+      title: "Introduction",
       video: "https://www.youtube.com/embed/bMknfKXIFA8"
     },
     {
-      title: "React Components",
+      title: "Core Concepts",
+      video: "https://www.youtube.com/embed/Tn6-PIqc4UM"
+    },
+    {
+      title: "Project Demo",
       video: "https://www.youtube.com/embed/Ke90Tje7VS0"
     },
     {
-      title: "React Project",
-      video: "https://www.youtube.com/embed/w7ejDZ8SWv8"
+      title: "Advanced Topics",
+      video: "https://www.youtube.com/embed/0riHps91AzE"
     }
   ];
 
-  const [activeLesson, setActiveLesson] = useState(0);
+  const [activeLesson,setActiveLesson]=useState(0);
 
   return (
-    <div className="container mt-4">
 
-      <h2>{course.title}</h2>
+    <div className="container-fluid p-4">
+
+      <h3 className="mb-4">{course.title}</h3>
 
       <div className="row">
 
-        {/* Video Section */}
+        {/* VIDEO PLAYER */}
+
         <div className="col-md-8">
 
-          <div style={{width:"100%", height:"400px"}}>
+          <div className="card shadow">
 
             <iframe
               width="100%"
-              height="100%"
+              height="420"
               src={lessons[activeLesson].video}
-              title="Course Video"
-              frameBorder="0"
+              title="Course video"
               allowFullScreen
-            ></iframe>
+            />
 
           </div>
 
-          <h5 className="mt-3">
-            {lessons[activeLesson].title}
-          </h5>
-
         </div>
 
+        {/* LESSON PLAYLIST */}
 
-        {/* Lesson List */}
         <div className="col-md-4">
 
-          <h5>Lessons</h5>
+          <div className="card shadow">
 
-          <ul className="list-group">
+            <div className="card-header">
+              <h5>Course Content</h5>
+            </div>
 
-            {lessons.map((lesson, index) => (
+            <ul className="list-group list-group-flush">
 
-              <li
-                key={index}
-                className={`list-group-item ${
-                  index === activeLesson ? "active" : ""
-                }`}
-                style={{cursor:"pointer"}}
-                onClick={() => setActiveLesson(index)}
-              >
-                {lesson.title}
-              </li>
+              {lessons.map((lesson,index)=>(
+                <li
+                  key={index}
+                  className={`list-group-item ${
+                    activeLesson===index ? "active" : ""
+                  }`}
+                  style={{cursor:"pointer"}}
+                  onClick={()=>setActiveLesson(index)}
+                >
+                  {index+1}. {lesson.title}
+                </li>
+              ))}
 
-            ))}
+            </ul>
 
-          </ul>
+          </div>
 
         </div>
 
       </div>
 
     </div>
-  );
+
+  )
+
 }
 
 export default CoursePlayer;
