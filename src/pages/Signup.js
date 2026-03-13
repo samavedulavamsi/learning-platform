@@ -6,6 +6,7 @@ function Signup(){
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
+  const [adminKey,setAdminKey] = useState("");
 
   const navigate = useNavigate();
 
@@ -23,10 +24,14 @@ function Signup(){
       return;
     }
 
+    const role =
+      adminKey === "LMSADMIN" ? "admin" : "student";
+
     const newUser = {
       name,
       email,
-      password
+      password,
+      role
     };
 
     users.push(newUser);
@@ -71,6 +76,13 @@ function Signup(){
           onChange={(e)=>setPassword(e.target.value)}
         />
 
+        <input
+          className="form-control mb-3"
+          placeholder="Admin Key (leave empty if student)"
+          value={adminKey}
+          onChange={(e)=>setAdminKey(e.target.value)}
+        />
+
         <button className="btn btn-success w-100">
           Sign Up
         </button>
@@ -81,4 +93,4 @@ function Signup(){
   )
 }
 
-export default Signup
+export default Signup;

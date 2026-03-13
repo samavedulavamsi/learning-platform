@@ -9,27 +9,27 @@ function Login() {
   const navigate = useNavigate();
 
   function handleLogin(e){
-    e.preventDefault();
+  e.preventDefault();
 
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+  const users =
+    JSON.parse(localStorage.getItem("users")) || [];
 
-    const user = users.find(
-      (u)=>u.email === email && u.password === password
-    );
+  const user = users.find(
+    (u)=>u.email === email && u.password === password
+  );
 
-    if(!user){
-      alert("Invalid email or password");
-      return;
-    }
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify(user)
-    );
-
-    navigate("/");
+  if(!user){
+    alert("Invalid email or password");
+    return;
   }
+
+  localStorage.setItem(
+    "user",
+    JSON.stringify(user)
+  );
+
+  navigate("/");
+}
 
   return (
 

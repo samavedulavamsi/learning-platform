@@ -3,6 +3,7 @@
 body {
   background-color: #f5f7fb;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
 }
 
 
@@ -58,15 +59,15 @@ body {
 }
 
 
-/* CONTINUE LEARNING HOVER */
+/* CONTINUE LEARNING CARD */
 
-.course-hover{
+.course-hover {
   transition: all 0.3s ease;
 }
 
-.course-hover:hover{
+.course-hover:hover {
   transform: translateY(-6px);
-  box-shadow:0 12px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 
@@ -114,49 +115,3 @@ body {
 }
 
 
-/* SIDEBAR */
-
-.sidebar {
-  background: #1e293b;
-  min-height: 100vh;
-  color: white;
-  padding: 20px;
-}
-
-.sidebar a {
-  display: block;
-  color: #cbd5e1;
-  text-decoration: none;
-  margin-bottom: 15px;
-}
-
-.sidebar a:hover {
-  color: white;
-}
-
-
-/* COURSE PLAYER */
-
-.video-container {
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-
-/* PROGRESS BAR */
-
-.progress{
-  height:10px;
-  border-radius:10px;
-}
-
-
-/* RESPONSIVE */
-
-@media (max-width: 768px) {
-
-  .hero-banner {
-    text-align: center;
-  }
-
-}

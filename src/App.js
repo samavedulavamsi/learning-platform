@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardLayout from "./components/DashboardLayout";
@@ -10,15 +9,23 @@ import CoursePlayer from "./pages/CoursePlayer";
 import MyCourses from "./pages/MyCourses";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
+
   return (
+
     <BrowserRouter>
 
       <Routes>
 
+        {/* Authentication */}
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
+
+        {/* Student Routes */}
 
         <Route
           path="/"
@@ -64,9 +71,24 @@ function App() {
           }
         />
 
+
+        {/* Admin Route */}
+
+       <Route
+path="/admin"
+element={
+  <ProtectedRoute adminOnly={true}>
+    <DashboardLayout>
+      <AdminDashboard/>
+    </DashboardLayout>
+  </ProtectedRoute>
+}
+/>
+
       </Routes>
 
     </BrowserRouter>
+
   );
 }
 

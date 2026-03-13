@@ -1,3 +1,4 @@
+
 import { useParams, Link } from "react-router-dom";
 import courses from "../data/courses";
 import CertificateButton from "../components/CertificateButton";
@@ -6,8 +7,22 @@ function CourseDetails() {
 
   const { id } = useParams();
 
+  /* Find course from old frontend data */
+
   const course =
-    courses.find((c) => c.id === Number(id));
+    courses.find((c) =>
+      String(c.id) === String(id)
+    );
+
+  /* Prevent crash if course not found */
+
+  if(!course){
+    return(
+      <div className="container p-4">
+        <h3>Course not found</h3>
+      </div>
+    )
+  }
 
   function enrollCourse(){
 

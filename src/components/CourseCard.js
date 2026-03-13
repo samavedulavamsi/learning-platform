@@ -1,49 +1,54 @@
 import { Link } from "react-router-dom";
 
-function CourseCard({course}) {
+function CourseCard({ course }) {
 
-return(
+return (
+<div className="col-12 col-sm-6 col-md-4 col-lg-3">
 
-<div className="col-md-3">
+  <div className="card shadow-sm h-100">
 
-<div className="card course-card shadow-sm">
+    <img
+      src={course.image}
+      alt={course.title}
+      className="card-img-top"
+      style={{
+        height: "160px",
+        objectFit: "cover"
+      }}
+    />
 
-<img
-src={course.image}
-className="card-img-top"
-alt={course.title}
-/>
+    <div className="card-body d-flex flex-column">
 
-<div className="card-body">
+      <h6 className="fw-bold">
+        {course.title}
+      </h6>
 
-<h5>{course.title}</h5>
+      <p className="text-muted small mb-1">
+        Instructor: {course.instructor}
+      </p>
 
-<p className="text-muted">
-Instructor: {course.instructor}
-</p>
+      <p className="text-warning small mb-1">
+        ⭐ {course.rating || 4.5}
+      </p>
 
-<p className="text-warning">
-⭐ {course.rating} ({course.students} students)
-</p>
+      <p className="text-muted small mb-3">
+        {course.lessons || 0} lessons
+      </p>
 
-<p className="text-muted">
-{course.lessons} lessons
-</p>
+      <Link
+        to={`/course/${course._id}`}
+        className="btn btn-primary mt-auto"
+      >
+        View Course
+      </Link>
 
-<Link
-to={`/course/${course.id}`}
-className="btn btn-primary w-100"
->
-View Course
-</Link>
+    </div>
+
+  </div>
 
 </div>
 
-</div>
-
-</div>
-
-)
+);
 
 }
 
