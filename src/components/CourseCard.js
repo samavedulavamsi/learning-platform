@@ -1,6 +1,9 @@
+
 import { Link } from "react-router-dom";
 
 function CourseCard({ course }) {
+
+const courseId = course._id || course.id;
 
 return (
 <div className="col-12 col-sm-6 col-md-4 col-lg-3">
@@ -36,7 +39,7 @@ return (
       </p>
 
       <Link
-        to={`/course/${course._id}`}
+        to={`/course/${courseId}`}
         className="btn btn-primary mt-auto"
       >
         View Course
@@ -47,9 +50,7 @@ return (
   </div>
 
 </div>
-
 );
-
 }
 
 export default CourseCard;
